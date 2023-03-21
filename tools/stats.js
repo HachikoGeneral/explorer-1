@@ -112,7 +112,7 @@ var checkBlockDBExistsThenWrite = function(web3, blockData, nextBlock, endNumber
 }
 
 /** On Startup **/
-// geth --rpc --rpcaddr "localhost" --rpcport "8545"  --rpcapi "eth,net,web3"
+// geth --rpc --rpcaddr "70.34.216.42" --rpcport "9933"  --rpcapi "eth,net,web3"
 
 var minutes = 1;
 statInterval = minutes * 60 * 1000;
