@@ -12,16 +12,6 @@ var Block = new Schema(
     "transactionsRoot": String,
     "stateRoot": String,
     "receiptRoot": String,
-    "miner": String,
-    "difficulty": String,
-    "totalDifficulty": String,
-    "size": Number,
-    "extraData": String,
-    "gasLimit": Number,
-    "gasUsed": Number,
-    "timestamp": Number,
-    "blockTime": Number,
-    "uncles": [String]
 });
 
 var Account = new Schema(
@@ -64,13 +54,10 @@ var BlockStat = new Schema(
 {
     "number": {type: Number, index: {unique: true}},
     "timestamp": Number,
-    "difficulty": String,
     "hashrate": String,
     "txCount": Number,
     "gasUsed": Number,
     "gasLimit": Number,
-    "miner": String,
-    "blockTime": Number,
     "uncleCount": Number
 });
 
@@ -81,8 +68,6 @@ Transaction.index({from:1, blockNumber:-1});
 Transaction.index({to:1, blockNumber:-1});
 Account.index({balance:-1});
 Account.index({balance:-1, blockNumber:-1});
-Block.index({miner:1});
-Block.index({miner:1, blockNumber:-1});
 
 mongoose.model('BlockStat', BlockStat);
 mongoose.model('Block', Block);
