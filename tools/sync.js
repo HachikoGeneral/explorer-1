@@ -139,31 +139,7 @@ var writeTransactionsToDB = function(config, blockData, flush) {
     self.bulkOps = [];
     self.blocks = 0;
   }
-  // save miner addresses
-  if (!self.miners) {
-    self.miners = [];
-  }
-  if (blockData) {
-    self.miners.push({ address: blockData.miner, blockNumber: blockData.blockNumber, type: 0 });
-  }
-  if (blockData && blockData.transactions.length > 0) {
-    for (d in blockData.transactions) {
-      var txData = blockData.transactions[d];
-      txData.timestamp = blockData.timestamp;
-      txData.value = etherUnits.toEther(new BigNumber(txData.value), 'wei');
-      self.bulkOps.push(txData);
-    }
-    console.log('\t- block #' + blockData.number.toString() + ': ' + blockData.transactions.length.toString() + ' transactions recorded.');
-  }
-  self.blocks++;
-
-  if (flush && self.blocks > 0 || self.blocks >= config.bulkSize) {
-    var bulk = self.bulkOps;
-    self.bulkOps = [];
-    self.blocks = 0;
-    var miners = self.miners;
-    self.miners = [];
-
+  
     // setup accounts
     var data = {};
     bulk.forEach(function(tx) {
@@ -172,15 +148,6 @@ var writeTransactionsToDB = function(config, blockData, flush) {
         data[tx.to] = { address: tx.to, blockNumber: tx.blockNumber, type: 0 };
       }
     });
-
-    // setup miners
-    miners.forEach(function(miner) {
-      data[miner.address] = miner;
-    });
-
-    var accounts = Object.keys(data);
-
-    if (bulk.length == 0 && accounts.length == 0) return;
 
     // update balances
     if (accounts.length > 0)
