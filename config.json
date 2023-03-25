@@ -5,8 +5,8 @@
     "endBlock":     "latest",
     "quiet":        false,
     "syncAll":      true,
-    "patch":        true,
-    "patchBlocks":  100,
+    "patch":        false,
+    "patchBlocks":  0,
     "settings": {
         "symbol": "CHK",
         "name": "chikochain",
