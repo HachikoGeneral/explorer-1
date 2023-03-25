@@ -3,7 +3,7 @@
     "gethPort":     9933,
     "startBlock":   0,
     "endBlock":     "latest",
-    "quiet":        false,
+    "quiet":        true,
     "syncAll":      true,
     "patch":        false,
     "patchBlocks":  0,
