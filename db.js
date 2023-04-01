@@ -1,5 +1,4 @@
 var mongoose = require( 'mongoose' );
-var MongoClient = require('mongodb').MongoClient
 var Schema   = mongoose.Schema;
 
 var Block = new Schema(
@@ -96,10 +95,6 @@ module.exports.Contract = mongoose.model('Contract');
 module.exports.Transaction = mongoose.model('Transaction');
 module.exports.Account = mongoose.model('Account');
 
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/blockDB');
-MongoClient.connect(url)
-  .then(function (db) { // <- db as first argument
-    console.log(db)
-  })
-  .catch(function (err) {})
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/blockDB');
+
 // mongoose.set('debug', true);
