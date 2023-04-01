@@ -3,7 +3,7 @@ var Block     = mongoose.model( 'Block' );
 var BlockStat = mongoose.model( 'BlockStat' );
 var filters = require('./filters');
 
-var https = require('https');
+var http = require('http');
 var async = require('async');
 
 var etherUnits = require(__lib + "etherUnits.js")
