@@ -58,7 +58,7 @@ var Transaction = new Schema(
     "gasPrice": String,
     "timestamp": Number,
     "input": String
-}, {collection: "Transaction"});
+});
 
 var BlockStat = new Schema(
 {
@@ -73,6 +73,10 @@ var BlockStat = new Schema(
     "blockTime": Number,
     "uncleCount": Number
 });
+
+var pack = new ConventionPack();
+        pack.Add(new IgnoreExtraElementsConvention(true));
+        ConventionRegistry.Register("My Solution Conventions", pack, t => true);
 
 // create indices
 Transaction.index({timestamp:-1});
