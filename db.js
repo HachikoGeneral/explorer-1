@@ -42,7 +42,7 @@ var Contract = new Schema(
     "sourceCode": String,
     "abi": String,
     "byteCode": String
-}, {collection: "Contract"});
+});
 
 var Transaction = new Schema(
 {
@@ -51,8 +51,10 @@ var Transaction = new Schema(
     "blockHash": String,
     "blockNumber": Number,
     "transactionIndex": Number,
-    "from": String,
-    "to": String,
+    "status": Number,
+    "from": { type: String, lowercase: true },
+    "to": { type: String, lowercase: true },
+    "creates": { type: String, lowercase: true },
     "value": String,
     "gas": Number,
     "gasPrice": String,
