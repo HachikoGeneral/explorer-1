@@ -104,6 +104,7 @@ module.exports.Contract = mongoose.model('Contract');
 module.exports.Transaction = mongoose.model('Transaction');
 module.exports.Account = mongoose.model('Account');
 
+mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/blockDB');
 
 // mongoose.set('debug', true);
