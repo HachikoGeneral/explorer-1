@@ -81,10 +81,6 @@ var BlockStat = new Schema(
     "uncleCount": Number
 });
 
-var pack = new ConventionPack();
-        pack.Add(new IgnoreExtraElementsConvention(true));
-        ConventionRegistry.Register("My Solution Conventions", pack, t => true);
-
 // create indices
 Transaction.index({timestamp:-1});
 Transaction.index({ blockNumber: -1 });
